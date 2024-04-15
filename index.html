@@ -6,29 +6,80 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
+      if (profile.active) {
+        if (reason) {
+          profile.active = false;
+          profile.reason = reason
+          return profile
+        } else {
+          return "confirm status manually";
+        } 
+      } else {
+        profile.active = true;
+        delete profile.reason;
+        return profile;
+      }
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates";
+      }
+      
+      if (grid[x - 1][y - 1] === "🟥") {
+        return "🟥 💀";
+      } else if (grid[x - 1][y - 1] === "🟦") {
+        return "🟦 🥳";
+      } else {
+        return "invalid coordinates";
     }
+  }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      for (let key in obj) {
+        if (key.length > 9) {
+          return "shorten all prop names to 9 chars or less"
+        }
+        
+        if (obj[key] === 0) {
+          obj[key] = false;
+        } else if (obj[key] === 1) {
+          obj[key] = true;
+        }
+        
+        if (obj[key] === null) {
+          delete obj[key];
+        }
+      }
+      return obj;
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (text === "" || forbidden.length === 0) {
+        return text;
+      }
+      let words = text.split(/\s+/)
+      for (let i = 0; i < words.length; i++) {
+        let word = words[i]; 
 
+        if (forbidden.includes(word.toLowerCase())) {
+          let x = 'x'.repeat(word.length);
+          words[i] = x
+        }
+      }
+      let newtext = words.join(' ');
+      return newtext
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      let digits = `(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6)}`;
+      return digits
     }
-
+    
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
 
