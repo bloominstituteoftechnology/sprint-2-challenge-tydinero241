@@ -27,14 +27,11 @@
         return "invalid coordinates";
       }
       
-      if (grid[x - 1][y - 1] === "🟥") {
+      if (grid[y - 1][x - 1] === "🟥") {
         return "🟥 💀";
-      } else if (grid[x - 1][y - 1] === "🟦") {
-        return "🟦 🥳";
-      } else {
-        return "invalid coordinates";
+      } return "🟦 🥳";
     }
-  }
+
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
